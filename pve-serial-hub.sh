@@ -27,8 +27,8 @@ function get_menu_items {
 
     serial=( $( ls $qemu_dir | grep -P '^[1-9][0-9]{2,8}\.serial[0-3]$' ) )
     if [[ "${#vm}" -lt 1 || "$1" == '<refresh>' ]]; then
-		vm=( $( qm list | awk -F' ' 'NR>1 {print $1 "," $2}' ) )
-		result=''
+	vm=( $( qm list | awk -F' ' 'NR>1 {print $1 "," $2}' ) )
+	result=''
     fi
     for item2 in "${serial[@]}"; do
 	[ "`file -b $qemu_dir/$item2`" == 'socket'  ] || continue
