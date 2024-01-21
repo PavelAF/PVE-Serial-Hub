@@ -58,6 +58,7 @@ function get_terminal {
         screen -XS $session bindkey ^D detach
         screen -XS $session escape ^pp
         screen -XS $session vbell off
+	screen -XS $session defscrollback 10000
         screen -XS $session multiuser on
     fi
     screen -rx $session
