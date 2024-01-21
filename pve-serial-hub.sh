@@ -29,17 +29,17 @@ function get_menu_items {
     if [[ "${#vm}" -lt 1 || "$1" == '<refresh>' ]]; then
 		vm=( $( qm list | awk -F' ' 'NR>1 {print $1 "," $2}' ) )
 		result=''
-	fi
-	for item2 in "${serial[@]}"; do
-		[ "`file -b $qemu_dir/$item2`" == 'socket'  ] || continue
-		vmid2=$( echo "$item2" | grep -oP '^[0-9]+' )
-		[ "$vmid2" == "$vmid" ] && sid='X' && continue
-		add_item
-		vmid=$vmid2
-		item=$item2
-		sid=${item2: -1}
-		vm_name=$( printf '%s\n' "${vm[@]}" | awk -F',' -v vmid=$vmid 'vmid==$1 {print $2}' )
-	done
+    fi
+    for item2 in "${serial[@]}"; do
+	[ "`file -b $qemu_dir/$item2`" == 'socket'  ] || continue
+	vmid2=$( echo "$item2" | grep -oP '^[0-9]+' )
+	[ "$vmid2" == "$vmid" ] && sid='X' && continue
+	add_item
+	vmid=$vmid2
+	item=$item2
+	sid=${item2: -1}
+	vm_name=$( printf '%s\n' "${vm[@]}" | awk -F',' -v vmid=$vmid 'vmid==$1 {print $2}' )
+    done
     add_item
 }
 
