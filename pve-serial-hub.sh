@@ -17,7 +17,7 @@ nl=$'\n'
 
 function get_menu_items {
     menu_items=()
-    local vmid2 vmid item2 sid vm_name
+    local vmid2 vmid item sid vm_name
 
     add_item() {
         [ "$sid" == 'X' ] && menu_items+=( "#$vmid" "${vm_name:="<$vmid>"} ($vmid) -->" ) && return
