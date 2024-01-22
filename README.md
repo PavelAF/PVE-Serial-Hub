@@ -15,7 +15,7 @@ EOT
 service ssh reload
 ```
 
-Editing GUB:
+Editing GRUB in VM:
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0"
 ```
@@ -23,7 +23,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0"
 update-grub && reboot
 ```
 
-For adaptive console size, you can use this bash script, which will be run at login:
+For adaptive console size, you can use this bash script on VM, which will be run at login:
 ```
 cat <<'EOT' >/etc/profile.d/serial_resize.sh
 serial_resize() {
