@@ -37,3 +37,4 @@ serial_resize() {
 [[ "$(tty)" =~ ^/dev/ttyS[0-9]$ ]] && serial_resize
 EOT
 ```
+And run `serial_resize`
