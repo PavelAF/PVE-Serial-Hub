@@ -3,7 +3,7 @@
 
 qemu_dir='/var/run/qemu-server'
 screen_name_preffix='pve-vm-'
-whirptail_opt=('--title' 'PVE Serial console HUB' '--backtitle' 'by AF' '--notags' '--ok-button' 'Select' '--cancel-button' 'Exit')
+whiptail_opt=('--title' 'PVE Serial console HUB' '--backtitle' 'by AF' '--notags' '--ok-button' 'Select' '--cancel-button' 'Exit')
 requirements=( qm whiptail screen socat)
 
 ##################################################
@@ -69,19 +69,19 @@ function get_terminal {
     screen -rx $session
 }
 
-TERM=ansi whiptail "${whirptail_opt[@]}" --infobox 'Collecting information' 0 0
+TERM=ansi whiptail "${whiptail_opt[@]}" --infobox 'Collecting information' 0 0
 while true; do
     if [ "$in_submenu" == 0 ]; then
         get_menu_items $result
-        result=`whiptail "${whirptail_opt[@]}" --default-item "$result" --menu "Select VM and socket" 0 0 2 "${menu_items[@]}" '<refresh>' ' <Refresh info>' 3>&1 1>&2 2>&3`
+        result=`whiptail "${whiptail_opt[@]}" --default-item "$result" --menu "Select VM and socket" 0 0 2 "${menu_items[@]}" '<refresh>' ' <Refresh info>' 3>&1 1>&2 2>&3`
         [ $? -eq 1 ] && exit
         [ "${result:0:1}" == '#' ] && in_submenu=1 && continue
-        [ "$result" == '<refresh>' ] && TERM=ansi whiptail "${whirptail_opt[@]}" --infobox 'Collecting information' 0 0 &&  continue
+        [ "$result" == '<refresh>' ] && TERM=ansi whiptail "${whiptail_opt[@]}" --infobox 'Collecting information' 0 0 &&  continue
         get_terminal $result
     else
         get_submenu_items $result $subresult
         name=$( printf '%s\n' "${vm[@]}" | awk -F',' -v vmid="${result:1}" 'vmid==$1 {print $2}' )
-        subresult=`whiptail "${whirptail_opt[@]}" --default-item "$subresult" --menu "${nl}Select VM socket for $name (${result:1})" 0 0 0 '<return_prev>' '<-- main menu' "${menu_items[@]}" '<refresh>' ' <Refresh info>' 3>&1 1>&2 2>&3`
+        subresult=`whiptail "${whiptail_opt[@]}" --default-item "$subresult" --menu "${nl}Select VM socket for $name (${result:1})" 0 0 0 '<return_prev>' '<-- main menu' "${menu_items[@]}" '<refresh>' ' <Refresh info>' 3>&1 1>&2 2>&3`
         [ $? -eq 1 ] && exit
         [ "$subresult" == '<return_prev>' ] && in_submenu=0 && continue
         [ "$subresult" == '<refresh>' ] && continue
