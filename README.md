@@ -2,7 +2,7 @@ A simple bash script to easily connect to Proxmox VE serial consoles and study c
 
 Utilities used: whirptail, screen, socat, qm
 
-For connections via sshd, example configuration /etc/ssh/sshd_config.d/pve-serial-hub.conf:
+For connections via sshd, example configuration `/etc/ssh/sshd_config.d/pve-serial-hub.conf`:
 
 ```
 Port 1022
