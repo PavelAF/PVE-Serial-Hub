@@ -4,7 +4,7 @@
 qemu_dir='/var/run/qemu-server'
 screen_name_preffix='pve-vm-'
 whiptail_opt=('--title' 'PVE Serial console HUB' '--backtitle' 'by AF' '--notags' '--ok-button' 'Select' '--cancel-button' 'Exit')
-requirements=( qm whiptail screen socat)
+requirements=( qm whiptail screen socat )
 
 ##################################################
 
