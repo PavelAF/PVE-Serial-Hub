@@ -12,6 +12,7 @@ Match LocalPort 1022
     AllowUsers root
     ForceCommand /root/pve-serial-hub.sh
 EOT
+service ssh reload
 ```
 
 Editing GUB:
