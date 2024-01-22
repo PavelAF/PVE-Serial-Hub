@@ -4,11 +4,13 @@
 qemu_dir='/var/run/qemu-server'
 screen_name_preffix='pve-vm-'
 whirptail_opt=('--title' 'PVE Serial console HUB' '--backtitle' 'by AF' '--notags' '--ok-button' 'Select' '--cancel-button' 'Exit')
-requirements=( whiptail screen socat qm )
+requirements=( qm whiptail screen socat)
 
 ##################################################
 
-for i in "${requirements[@]}"; do [ ! -x "$(command -v $i )" ] && echo "'$i' is required, it is not installed. Aborting." && exit; done
+for i in "${requirements[@]}"; do [ ! -x "$(command -v $i )" ] \
+    && echo -e "'$i' is required, it is not installed. Aborting.\nRequirement utilities: ${requirements[@]}" \
+    && read -n 1 -s -p 'Press any key to exit' && exit; done
 
 serial=()
 vm=()
