@@ -11,3 +11,11 @@ Match LocalPort 1022
     AllowUsers root
     ForceCommand /root/pve-serial-hub.sh
 ```
+
+Editing GUB:
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0"
+```
+```
+update-grub && reboot
+```
