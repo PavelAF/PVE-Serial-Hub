@@ -39,5 +39,6 @@ serial_resize() {
 }
 [[ "$(tty)" =~ ^/dev/ttyS[0-9]$ ]] && serial_resize
 EOT
+chmod +x /etc/profile.d/serial_resize.sh
 ```
 And run `serial_resize`
