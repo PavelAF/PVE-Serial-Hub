@@ -5,11 +5,13 @@ Utilities used: whirptail, screen, socat, qm
 For connections via sshd, example configuration `/etc/ssh/sshd_config.d/pve-serial-hub.conf`:
 
 ```
+cat <<'EOT' >/etc/ssh/sshd_config.d/pve-serial-hub.conf
 Port 1022
 
 Match LocalPort 1022
     AllowUsers root
     ForceCommand /root/pve-serial-hub.sh
+EOT
 ```
 
 Editing GUB:
