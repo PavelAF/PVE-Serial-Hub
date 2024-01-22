@@ -19,3 +19,21 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0"
 ```
 update-grub && reboot
 ```
+
+For adaptive console size, you can use this bash script, which will be run at login:
+```
+cat <<'EOT' >/etc/profile.d/serial_resize.sh
+serial_resize() {
+  old=$(stty -g)
+  stty raw -echo min 0 time 5
+
+  printf '\0337\033[r\033[999;999H\033[6n\0338' > /dev/tty
+  IFS='[;R' read -r _ rows cols _ < /dev/tty
+
+  stty "$old"
+
+  stty cols "$cols" rows "$rows"
+}
+[[ "$(tty)" =~ ^/dev/ttyS[0-9]$ ]] && serial_resize
+EOT
+```
