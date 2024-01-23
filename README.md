@@ -1,4 +1,4 @@
-A simple bash script to easily connect to Proxmox VE serial consoles and study collaboration
+A simple bash script to easily connect to Proxmox VE serial consoles and for learning/collaboration.
 
 Utilities used: whirptail, screen, socat, qm
 
