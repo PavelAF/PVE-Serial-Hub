@@ -15,7 +15,7 @@ EOT
 service ssh reload
 ```
 
-Editing GRUB in VM:
+Add a Virtual Serial Port to the VM and edit GRUB in VM:
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0"
 ```
