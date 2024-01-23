@@ -1,5 +1,6 @@
 A simple bash script to easily connect to Proxmox VE serial consoles and for learning/collaboration.
-Screen supports multi-user functionality, allowing multiple users to interact with the console simultaneously. Simply open a second console on another host and start collaborating.
+
+`screen` supports multi-user functionality, allowing multiple users to interact with the console simultaneously. Simply open a second console on another host and start collaborating.
 
 Utilities used: whirptail, screen, socat, qm
 
