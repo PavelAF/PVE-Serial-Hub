@@ -23,6 +23,10 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0"
 update-grub && reboot
 ```
 
+
+To exit and save session, press Ctrl+D. To break session, press Ctrl+B.
+
+
 For adaptive console size, you can use this bash script on VM, which will be run at login:
 ```
 cat <<'EOT' >/etc/profile.d/serial_resize.sh
