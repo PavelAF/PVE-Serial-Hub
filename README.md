@@ -17,14 +17,10 @@ EOT
 service ssh reload
 ```
 
-Add a Virtual Serial Port to the VM and edit GRUB in VM:
+Now we need to start the getty process responsible for the serial terminal on /dev/ttyS0 on the VM::
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="quiet console=ttyS0"
+systemctl enable --now serial-getty@ttyS0
 ```
-```
-update-grub && reboot
-```
-
 
 To exit and save session, press Ctrl+D. To break session, press Ctrl+B.
 
